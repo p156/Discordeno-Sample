@@ -1,7 +1,8 @@
+//定義
 import { createBot, getBotIdFromToken, startBot, Intents, CreateSlashApplicationCommand, Bot, Interaction, InteractionResponseTypes } from "@discordeno/mod.ts";
-
 import "$std/dotenv/load.ts"
 
+//スラッシュコマンドのインターフェイス定義
 interface SlashCommand {
     info: CreateSlashApplicationCommand;
     response(bot: Bot, interaction: Interaction): Promise<void>;
@@ -56,7 +57,7 @@ bot.helpers.upsertGlobalApplicationCommands([HelloCommand.info]);
 
 
 await startBot(bot);
-
+//ここで常時起動
 Deno.cron("Continuous Request", "*/2 * * * *", () => {
     console.log("running...");
 });
