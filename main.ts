@@ -2,7 +2,7 @@ import 'dotenv/config'
 import { createBot } from '@discordeno/bot'
 
 export const bot = createBot({
-  token: process.env.TOKEN,
+  token: process.env.BOT_TOKEN,
 })
 
 await bot.start()
