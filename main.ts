@@ -7,9 +7,8 @@ const bot = createBot({
     token: BotToken,
     botId: getBotIdFromToken(BotToken) as bigint,
 });
-await startBot(bot);
 
-await bot.start()
+await startBot(bot);
 
 Deno.cron("Continuous Request", "*/2 * * * *", () => {
     console.log("running...");
