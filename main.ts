@@ -1,4 +1,3 @@
-import 'dotenv/config'
 import "$std/dotenv/load.ts"
 import { createBot,getBotIdFromToken,startBot } from '@discordeno/mod.ts'
 
