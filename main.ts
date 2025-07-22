@@ -1,9 +1,13 @@
 import "$std/dotenv/load.ts"
-import { createBot } from '@discordeno/mod.ts'
+import { createBot, getBotIdFromToken, startBot, } from '@discordeno/mod.ts'
 
-export const bot = createBot({
-  token: process.env.BOT_TOKEN,
-})
+const BotToken: string = Deno.env.get("BOT_TOKEN")!;
+
+const bot = createBot({
+    token: BotToken,
+    botId: getBotIdFromToken(BotToken) as bigint,
+});
+await startBot(bot);
 
 await bot.start()
 
