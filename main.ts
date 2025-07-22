@@ -30,6 +30,25 @@ const HelloCommand: SlashCommand = {
     }
 }
 
+const dice: SlashCommand = {
+    // コマンド情報
+    info: {
+        name: "dice",
+        description: "ダイスを振ります。"
+    },
+    // コマンド内容
+    response: async (bot, interaction) => {
+        return await bot.helpers.sendInteractionResponse(interaction.id, interaction.token, {
+            type: InteractionResponseTypes.ChannelMessageWithSource,
+            data: {
+                content: "テスト",
+                // エフェメラルメッセージ (https://discord.com/developers/docs/resources/message#message-object-message-flags)
+                flags: 1 << 6
+            }
+        });
+    }
+}
+
 // ボットの作成
 const bot = createBot({
     token: BotToken,
@@ -45,18 +64,25 @@ const bot = createBot({
         },
         interactionCreate:async  (_bot, interaction) => {
             await HelloCommand.response(bot, interaction);
+            await dice.response(bot, interaction);
         }
     }
 });
 
 // コマンドの作成
 bot.helpers.createGlobalApplicationCommand(HelloCommand.info);
-
+bot.helpers.createGlobalApplicationCommand(dice.info);
 // コマンドの登録
 bot.helpers.upsertGlobalApplicationCommands([HelloCommand.info]);
+bot.helpers.upsertGlobalApplicationCommands([dice.info]);
 
 
 await startBot(bot);
+
+
+
+
+
 //ここで常時起動
 Deno.cron("Continuous Request", "*/2 * * * *", () => {
     console.log("running...");
