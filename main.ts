@@ -1,6 +1,6 @@
 //定義
 import "$std/dotenv/load.ts"
-import { createBot, getBotIdFromToken, startBot, } from '@discordeno/mod.ts'
+import { createBot, getBotIdFromToken, startBot, } from '@discordeno/bot'
 
 // .env からトークンを取得
 const BotToken: string = Deno.env.get("BOT_TOKEN")!;
