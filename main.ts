@@ -15,12 +15,12 @@ const bot = createBot({
     //メッセージ受信時処理
     messageCreate: async (bot, message) => {
       if (message.authorId === bot.id) return; // ボット自身のメッセージを無視
-      await bot.helpers.sendMessage(message.channelId, {
-        content: message.content,
-      });
-    },
-
-    
+      
+        if(message.mentionedUserIds.includes(bot.id)){
+            await bot.helpers.sendMessage(message.channelId, 
+                                          {content: message.content,});
+        }
+    },    
 });
 
 
