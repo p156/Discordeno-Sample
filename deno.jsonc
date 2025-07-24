@@ -7,6 +7,6 @@
     },
     "imports": {
         "$std/": "https://deno.land/std@0.224.0/",
-        "@discordeno/": "https://www.npmjs.com/package/discordeno"
+        "@discordeno/": "https://deno.land/x/discordeno@20.0.0"
     }
 }
