@@ -19,7 +19,7 @@ const bot = createBot({
         if(message.mentionedUserIds.includes(bot.id)){
             await bot.helpers.sendMessage(message.channelId, 
                                           {content: message.content,});
-        },
+        }
     },    
 });
 
