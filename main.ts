@@ -8,9 +8,10 @@ const BotToken: string = Deno.env.get("BOT_TOKEN")!;
 
 //botとしての開始
 const bot = createBot({
-    token,　//トークンをとりあえず変数で
-    botId: BigInt(getBotIdFromToken(BotToken)),　//ボットにトークンを入れて接続
+    token: BotToken,//トークンをとりあえず変数で
+    botId: getBotIdFromToken(BotToken) as bigint,//ボットにトークンを入れて接続
 
+    
     //メッセージ受信時処理
     messageCreate: async (bot, message) => {
       if (message.authorId === bot.id) return; // ボット自身のメッセージを無視
